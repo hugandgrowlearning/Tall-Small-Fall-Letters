@@ -7,351 +7,418 @@
 <title>Tall, Small & Fall Letters</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #f8f5ef;
-        color: #333;
-        overflow-x: hidden;
-    }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f8f5ef;
+    color: #3f3f3f;
+    overflow-x: hidden;
+}
 
-    header {
-        text-align: center;
-        padding: 22px 20px 10px;
-    }
+header {
+    text-align: center;
+    padding: 24px 20px 8px;
+}
 
-    h1 {
-        margin: 0;
-        font-size: 32px;
-        color: #3f3f3f;
-    }
+h1 {
+    margin: 0;
+    font-size: 32px;
+}
 
-    .subtitle {
-        margin-top: 7px;
-        font-size: 17px;
-        color: #777;
-    }
+.subtitle {
+    margin-top: 7px;
+    color: #777;
+    font-size: 17px;
+}
 
-    /* MAIN GAME AREA */
+/* =========================================
+   MAIN GAME
+========================================= */
 
-    .game {
-        width: min(1100px, 95%);
-        margin: 20px auto;
-        display: grid;
-        grid-template-columns: 1fr 260px;
-        gap: 25px;
-        align-items: stretch;
-    }
+.game {
+    width: min(1150px, 95%);
+    margin: 20px auto;
 
-    /* LEFT SIDE */
+    display: grid;
+    grid-template-columns: 1fr 250px;
+    gap: 25px;
+    align-items: stretch;
+}
 
-    .paper-card {
-        background: white;
-        border-radius: 22px;
-        padding: 28px;
-        box-shadow: 0 6px 18px rgba(0,0,0,.08);
-    }
+/* =========================================
+   PAPER CARD
+========================================= */
 
-    .instruction {
-        text-align: center;
-        font-size: 19px;
-        font-weight: 600;
-        margin-bottom: 22px;
-    }
+.paper-card {
+    background: white;
+    border-radius: 22px;
+    padding: 28px;
 
-    /* WRITING PAPER */
+    box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
 
-    #paper {
-        position: relative;
-        width: 100%;
-        height: 440px;
-        background: #fff;
-        border-radius: 16px;
-        overflow: hidden;
-        border: 3px solid #ece8df;
-        touch-action: none;
-    }
+.instruction {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 22px;
+}
 
-    /* top writing line */
+/* =========================================
+   WRITING PAPER
+========================================= */
 
-    .top-line {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 70px;
-        height: 3px;
-        background: #c7c7c7;
-    }
+#paper {
+    position: relative;
 
-    /* dashed middle line */
+    width: 100%;
+    height: 440px;
 
-    .middle-line {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 210px;
-        border-top: 3px dashed #bcbcbc;
-        z-index: 3;
-    }
+    background: white;
+
+    border: 3px solid #ece8df;
+    border-radius: 16px;
+
+    overflow: hidden;
+    touch-action: none;
+}
+
+/*
+    TOP LINE
+*/
+
+.top-line {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 60px;
+
+    height: 3px;
+
+    background: #bfc3c5;
+}
+
+/*
+    MIDDLE / SMALL-LETTER TOP LINE
+*/
+
+.middle-line {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 200px;
+
+    border-top: 3px dashed #bfc3c5;
+
+    z-index: 3;
+}
+
+/*
+    YELLOW SMALL-LETTER AREA
+*/
+
+.small-zone {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 200px;
+    height: 115px;
+
+    background: rgba(255, 216, 74, .32);
+
+    z-index: 1;
+}
+
+/*
+    YELLOW BASELINE
+*/
+
+.baseline {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 315px;
+
+    height: 6px;
+
+    background: #f2c94c;
+
+    z-index: 4;
+}
+
+/* =========================================
+   OPTIONAL SUBTLE LABELS
+========================================= */
+
+.zone-label {
+    position: absolute;
+
+    left: 15px;
+
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+
+    opacity: .20;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+.tall-label {
+    top: 120px;
+}
+
+.small-label {
+    top: 245px;
+}
+
+.fall-label {
+    top: 370px;
+}
+
+/* =========================================
+   RIGHT LETTER PANEL
+========================================= */
+
+.letter-panel {
+    background: #e7f1ed;
+
+    border-radius: 22px;
+
+    padding: 25px 15px;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,.07);
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    min-height: 440px;
+}
+
+.letter-panel h2 {
+    margin: 0 0 35px;
+
+    font-size: 18px;
+
+    color: #666;
+}
+
+/* =========================================
+   DRAGGABLE LETTER
+
+   NO WHITE BACKGROUND
+   NO BOX
+========================================= */
+
+#letter {
+    font-family:
+        "Arial Rounded MT Bold",
+        "Trebuchet MS",
+        Arial,
+        sans-serif;
 
     /*
-       SMALL LETTER AREA
-
-       Between middle line and baseline.
+       Large enough to visually fit
+       the handwriting lines.
     */
 
-    .small-zone {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 210px;
-        height: 105px;
-        background: rgba(255, 216, 74, .30);
-        z-index: 1;
+    font-size: 155px;
+
+    line-height: .85;
+
+    font-weight: bold;
+
+    color: #444;
+
+    cursor: grab;
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    touch-action: none;
+
+    /*
+       Transparent — letter only!
+    */
+
+    background: transparent;
+
+    border: none;
+    box-shadow: none;
+
+    padding: 10px 20px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    transition:
+        transform .12s ease,
+        opacity .12s ease;
+}
+
+#letter:hover {
+    transform: scale(1.04);
+}
+
+#letter.dragging {
+    cursor: grabbing;
+
+    transform: scale(1.06);
+
+    opacity: .88;
+
+    z-index: 1000;
+}
+
+/* =========================================
+   FEEDBACK
+========================================= */
+
+#feedback {
+    margin-top: 30px;
+
+    min-height: 35px;
+
+    text-align: center;
+
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.correct {
+    color: #4b8b68;
+}
+
+.wrong {
+    color: #d27765;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.buttons {
+    width: min(1100px, 95%);
+
+    margin: 0 auto 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 14px;
+}
+
+button {
+    border: none;
+
+    border-radius: 14px;
+
+    padding: 13px 24px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    background: #f2c94c;
+
+    color: #3d3d3d;
+
+    box-shadow: 0 4px 0 #d5ac35;
+}
+
+button:active {
+    transform: translateY(3px);
+
+    box-shadow: 0 1px 0 #d5ac35;
+}
+
+/* =========================================
+   CONFETTI
+========================================= */
+
+.confetti {
+    position: fixed;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 3px;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    animation: fall 1.2s ease-out forwards;
+}
+
+@keyframes fall {
+
+    0% {
+        transform:
+            translateY(-20px)
+            rotate(0deg);
+
+        opacity: 1;
     }
 
-    /* strong yellow baseline */
+    100% {
+        transform:
+            translateY(400px)
+            rotate(500deg);
 
-    .baseline {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 315px;
-        height: 6px;
-        background: #f2c94c;
-        z-index: 4;
+        opacity: 0;
+    }
+}
+
+/* =========================================
+   TABLET / PHONE
+========================================= */
+
+@media (max-width: 760px) {
+
+    h1 {
+        font-size: 25px;
     }
 
-    /* subtle zone labels */
-
-    .zone-label {
-        position: absolute;
-        left: 15px;
-        font-size: 13px;
-        font-weight: bold;
-        letter-spacing: 1px;
-        opacity: .28;
-        pointer-events: none;
-        z-index: 2;
+    .game {
+        grid-template-columns: 1fr;
     }
-
-    .tall-label {
-        top: 105px;
-    }
-
-    .small-label {
-        top: 250px;
-    }
-
-    .fall-label {
-        top: 360px;
-    }
-
-    /* RIGHT PANEL */
 
     .letter-panel {
-        background: #e7f1ed;
-        border-radius: 22px;
-        padding: 25px 20px;
-        box-shadow: 0 6px 18px rgba(0,0,0,.07);
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        min-height: 440px;
+        min-height: 210px;
     }
 
     .letter-panel h2 {
-        font-size: 18px;
-        margin: 0 0 25px;
-        color: #555;
+        margin-bottom: 15px;
     }
-
-    /* draggable letter */
 
     #letter {
-        font-family: "Arial Rounded MT Bold", "Trebuchet MS", Arial, sans-serif;
-        font-size: 115px;
-        line-height: 1;
-        font-weight: bold;
-        color: #444;
-
-        cursor: grab;
-        user-select: none;
-        -webkit-user-select: none;
-
-        touch-action: none;
-
-        width: 150px;
-        height: 160px;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        background: white;
-        border-radius: 22px;
-
-        box-shadow:
-            0 6px 0 #d5d0c7,
-            0 10px 18px rgba(0,0,0,.10);
-
-        transition:
-            box-shadow .15s ease,
-            transform .15s ease;
+        font-size: 130px;
     }
-
-    #letter:hover {
-        transform: translateY(-2px);
-    }
-
-    #letter.dragging {
-        cursor: grabbing;
-        transform: scale(1.05);
-        box-shadow:
-            0 3px 0 #d5d0c7,
-            0 12px 24px rgba(0,0,0,.18);
-        z-index: 1000;
-    }
-
-    /* feedback */
-
-    #feedback {
-        margin-top: 24px;
-        min-height: 35px;
-        font-size: 22px;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    .correct {
-        color: #4b8b68;
-    }
-
-    .wrong {
-        color: #d27765;
-    }
-
-    /* BUTTONS */
-
-    .buttons {
-        width: min(1100px, 95%);
-        margin: 0 auto 30px;
-
-        display: flex;
-        justify-content: center;
-        gap: 14px;
-    }
-
-    button {
-        border: none;
-        border-radius: 14px;
-        padding: 13px 24px;
-
-        font-size: 16px;
-        font-weight: bold;
-
-        cursor: pointer;
-
-        background: #f2c94c;
-        color: #3d3d3d;
-
-        box-shadow: 0 4px 0 #d5ac35;
-
-        transition: transform .1s;
-    }
-
-    button:active {
-        transform: translateY(3px);
-        box-shadow: 0 1px 0 #d5ac35;
-    }
-
-    /* CONFETTI */
-
-    .confetti {
-        position: fixed;
-        width: 10px;
-        height: 10px;
-        border-radius: 3px;
-        pointer-events: none;
-        z-index: 9999;
-
-        animation: fall 1.2s ease-out forwards;
-    }
-
-    @keyframes fall {
-        0% {
-            transform: translateY(-20px) rotate(0deg);
-            opacity: 1;
-        }
-
-        100% {
-            transform: translateY(400px) rotate(500deg);
-            opacity: 0;
-        }
-    }
-
-    /* MOBILE / IPAD */
-
-    @media (max-width: 760px) {
-
-        h1 {
-            font-size: 25px;
-        }
-
-        .game {
-            grid-template-columns: 1fr;
-        }
-
-        .letter-panel {
-            min-height: 220px;
-        }
-
-        #paper {
-            height: 400px;
-        }
-
-        .top-line {
-            top: 60px;
-        }
-
-        .middle-line {
-            top: 190px;
-        }
-
-        .small-zone {
-            top: 190px;
-            height: 95px;
-        }
-
-        .baseline {
-            top: 285px;
-        }
-
-        .tall-label {
-            top: 100px;
-        }
-
-        .small-label {
-            top: 225px;
-        }
-
-        .fall-label {
-            top: 330px;
-        }
-
-        #letter {
-            font-size: 95px;
-            width: 130px;
-            height: 130px;
-        }
-    }
+}
 
 </style>
 </head>
@@ -359,16 +426,23 @@
 <body>
 
 <header>
-    <h1>Tall, Small & Fall Letters</h1>
+
+    <h1>
+        Tall, Small & Fall Letters
+    </h1>
+
     <div class="subtitle">
         Where does the letter belong?
     </div>
+
 </header>
 
 
 <div class="game">
 
-    <!-- WRITING PAPER -->
+    <!-- =====================================
+         WRITING PAPER
+    ====================================== -->
 
     <div class="paper-card">
 
@@ -403,11 +477,15 @@
     </div>
 
 
-    <!-- LETTER -->
+    <!-- =====================================
+         RANDOM LETTER
+    ====================================== -->
 
     <div class="letter-panel">
 
-        <h2>Drag this letter</h2>
+        <h2>
+            Drag this letter
+        </h2>
 
         <div id="letter">
             a
@@ -435,34 +513,47 @@
 
 <script>
 
-/* =========================================================
+/* =========================================
    LETTER GROUPS
-   ========================================================= */
-
-/*
-   Tall:
-   letters that extend above the small-letter area
-
-   Small:
-   letters that stay inside the yellow area
-
-   Fall:
-   letters with descenders below the baseline
-*/
+========================================= */
 
 const tallLetters = [
-    "b", "d", "f", "h", "k", "l", "t"
+    "b",
+    "d",
+    "f",
+    "h",
+    "k",
+    "l",
+    "t"
 ];
+
 
 const smallLetters = [
-    "a", "c", "e", "i", "m", "n",
-    "o", "r", "s", "u", "v", "w",
-    "x", "z"
+    "a",
+    "c",
+    "e",
+    "i",
+    "m",
+    "n",
+    "o",
+    "r",
+    "s",
+    "u",
+    "v",
+    "w",
+    "x",
+    "z"
 ];
 
+
 const fallLetters = [
-    "g", "j", "p", "q", "y"
+    "g",
+    "j",
+    "p",
+    "q",
+    "y"
 ];
+
 
 const allLetters = [
     ...tallLetters,
@@ -471,13 +562,22 @@ const allLetters = [
 ];
 
 
-/* =========================================================
+/* =========================================
    ELEMENTS
-   ========================================================= */
+========================================= */
 
-const letter = document.getElementById("letter");
-const paper = document.getElementById("paper");
-const feedback = document.getElementById("feedback");
+const letter =
+    document.getElementById("letter");
+
+const paper =
+    document.getElementById("paper");
+
+const feedback =
+    document.getElementById("feedback");
+
+const panel =
+    document.querySelector(".letter-panel");
+
 
 let currentLetter = "a";
 
@@ -486,12 +586,10 @@ let dragging = false;
 let offsetX = 0;
 let offsetY = 0;
 
-let startParent = null;
 
-
-/* =========================================================
+/* =========================================
    RANDOM LETTER
-   ========================================================= */
+========================================= */
 
 function newLetter() {
 
@@ -502,52 +600,75 @@ function newLetter() {
         next =
             allLetters[
                 Math.floor(
-                    Math.random() * allLetters.length
+                    Math.random()
+                    * allLetters.length
                 )
             ];
 
-    } while (
-        next === currentLetter &&
-        allLetters.length > 1
+    }
+    while (
+        next === currentLetter
     );
+
 
     currentLetter = next;
 
-    letter.textContent = currentLetter;
+    letter.textContent =
+        currentLetter;
+
 
     feedback.textContent = "";
+
     feedback.className = "";
+
 
     resetLetter();
 }
 
 
-/* =========================================================
+/* =========================================
    RESET LETTER
-   ========================================================= */
+========================================= */
 
 function resetLetter() {
 
-    const panel =
-        document.querySelector(".letter-panel");
+    /*
+       Return the letter to the
+       right-side panel.
+    */
 
-    letter.style.position = "relative";
-    letter.style.left = "0px";
-    letter.style.top = "0px";
+    if (
+        letter.parentElement !== panel
+    ) {
 
-    if (letter.parentElement !== panel) {
         panel.insertBefore(
             letter,
             feedback
         );
+
     }
+
+
+    letter.style.position =
+        "relative";
+
+    letter.style.left =
+        "0px";
+
+    letter.style.top =
+        "0px";
+
+    letter.style.width =
+        "";
+
+    letter.style.height =
+        "";
 }
 
 
-/* =========================================================
-   POINTER DOWN
-   Works with mouse + touch + Apple Pencil
-   ========================================================= */
+/* =========================================
+   START DRAG
+========================================= */
 
 letter.addEventListener(
     "pointerdown",
@@ -559,12 +680,18 @@ function startDrag(e) {
 
     e.preventDefault();
 
+
     dragging = true;
 
-    letter.classList.add("dragging");
+
+    letter.classList.add(
+        "dragging"
+    );
+
 
     const rect =
         letter.getBoundingClientRect();
+
 
     offsetX =
         e.clientX - rect.left;
@@ -572,14 +699,20 @@ function startDrag(e) {
     offsetY =
         e.clientY - rect.top;
 
+
     /*
-       Move the letter to body so it can travel
-       freely across both columns.
+       Move the letter to BODY while
+       dragging so it can cross from
+       the right panel onto the paper.
     */
 
-    document.body.appendChild(letter);
+    document.body.appendChild(
+        letter
+    );
 
-    letter.style.position = "fixed";
+
+    letter.style.position =
+        "fixed";
 
     letter.style.width =
         rect.width + "px";
@@ -587,23 +720,40 @@ function startDrag(e) {
     letter.style.height =
         rect.height + "px";
 
-    moveLetter(e.clientX, e.clientY);
 
-    letter.setPointerCapture(e.pointerId);
+    moveLetter(
+        e.clientX,
+        e.clientY
+    );
+
+
+    try {
+
+        letter.setPointerCapture(
+            e.pointerId
+        );
+
+    }
+    catch(error) {}
+
 }
 
 
-/* =========================================================
-   POINTER MOVE
-   ========================================================= */
+/* =========================================
+   DRAG
+========================================= */
 
 letter.addEventListener(
     "pointermove",
     function(e) {
 
-        if (!dragging) return;
+        if (!dragging) {
+            return;
+        }
+
 
         e.preventDefault();
+
 
         moveLetter(
             e.clientX,
@@ -624,21 +774,26 @@ function moveLetter(x, y) {
 }
 
 
-/* =========================================================
-   POINTER UP
-   ========================================================= */
+/* =========================================
+   RELEASE
+========================================= */
 
 letter.addEventListener(
     "pointerup",
     function(e) {
 
-        if (!dragging) return;
+        if (!dragging) {
+            return;
+        }
+
 
         dragging = false;
+
 
         letter.classList.remove(
             "dragging"
         );
+
 
         checkAnswer();
 
@@ -646,143 +801,212 @@ letter.addEventListener(
 );
 
 
-/* =========================================================
+/* =========================================
    CHECK ANSWER
-   ========================================================= */
+========================================= */
 
 function checkAnswer() {
 
     const paperRect =
         paper.getBoundingClientRect();
 
+
     const letterRect =
         letter.getBoundingClientRect();
 
 
     /*
-       First check whether the CENTER
-       of the letter is inside the paper.
+       Check that the letter was actually
+       dropped over the writing paper.
     */
 
     const centerX =
-        letterRect.left +
-        letterRect.width / 2;
+        letterRect.left
+        + letterRect.width / 2;
+
 
     const centerY =
-        letterRect.top +
-        letterRect.height / 2;
+        letterRect.top
+        + letterRect.height / 2;
 
 
     const insidePaper =
+
         centerX >= paperRect.left &&
+
         centerX <= paperRect.right &&
+
         centerY >= paperRect.top &&
+
         centerY <= paperRect.bottom;
 
 
     if (!insidePaper) {
 
         wrongAnswer();
-        return;
 
+        return;
     }
 
 
     /*
-       Convert letter center position
-       to coordinates relative to paper.
+       Get the TOP and BOTTOM of the
+       draggable letter relative to
+       the writing paper.
     */
 
-    const relativeY =
-        centerY - paperRect.top;
+    const relativeTop =
+        letterRect.top
+        - paperRect.top;
+
+
+    const relativeBottom =
+        letterRect.bottom
+        - paperRect.top;
+
+
+    const relativeCenter =
+        centerY
+        - paperRect.top;
 
 
     /*
-       Zones based on desktop proportions.
+       Actual line positions.
 
-       Tall center:
-       roughly upper writing area
-
-       Small center:
-       yellow zone
-
-       Fall center:
-       lower writing area
+       Paper:
+           top line       = 60
+           small top      = 200
+           baseline       = 315
     */
 
-    const paperHeight =
-        paperRect.height;
+    const smallTop = 200;
+
+    const baseline = 315;
 
 
     /*
-       Use proportional zones so it also
-       works when the screen resizes.
+       Give children a generous tolerance.
+       They do NOT need pixel-perfect
+       placement.
     */
 
-    const tallMax =
-        paperHeight * 0.47;
-
-    const smallMin =
-        paperHeight * 0.47;
-
-    const smallMax =
-        paperHeight * 0.75;
-
-    const fallMin =
-        paperHeight * 0.67;
+    const tolerance = 45;
 
 
     let correct = false;
 
 
-    /* TALL LETTER */
+    /* =====================================
+       SMALL LETTER
+
+       Main letter should be located
+       inside the yellow area.
+    ====================================== */
 
     if (
-        tallLetters.includes(currentLetter)
+        smallLetters.includes(
+            currentLetter
+        )
     ) {
 
-        if (
-            relativeY < tallMax
-        ) {
+        correct =
 
-            correct = true;
+            relativeCenter >
+                smallTop - 20
 
-        }
+            &&
+
+            relativeCenter <
+                baseline + 10;
 
     }
 
 
-    /* SMALL LETTER */
+    /* =====================================
+       TALL LETTER
+
+       Letter should extend ABOVE
+       the yellow small-letter area.
+
+       Bottom should still be near
+       the baseline.
+    ====================================== */
 
     else if (
-        smallLetters.includes(currentLetter)
+        tallLetters.includes(
+            currentLetter
+        )
     ) {
 
-        if (
-            relativeY >= smallMin &&
-            relativeY <= smallMax
-        ) {
+        const extendsUp =
+            relativeTop <
+            smallTop + 20;
 
-            correct = true;
 
-        }
+        const nearBaseline =
+            relativeBottom >
+                baseline - tolerance
+
+            &&
+
+            relativeBottom <
+                baseline + tolerance;
+
+
+        correct =
+            extendsUp &&
+            nearBaseline;
 
     }
 
 
-    /* FALL LETTER */
+    /* =====================================
+       FALL LETTER
+
+       IMPORTANT:
+
+       The BODY belongs in the yellow
+       SMALL area.
+
+       The descender goes BELOW the
+       yellow baseline.
+
+       Therefore the letter must span
+       BOTH areas.
+    ====================================== */
 
     else if (
-        fallLetters.includes(currentLetter)
+        fallLetters.includes(
+            currentLetter
+        )
     ) {
 
-        if (
-            relativeY >= fallMin
-        ) {
+        const bodyInSmallArea =
+            relativeTop <
+            baseline - 25;
 
-            correct = true;
 
-        }
+        const descenderBelowBaseline =
+            relativeBottom >
+            baseline + 25;
+
+
+        const notTooHigh =
+            relativeTop >
+            smallTop - tolerance;
+
+
+        correct =
+
+            bodyInSmallArea
+
+            &&
+
+            descenderBelowBaseline
+
+            &&
+
+            notTooHigh;
 
     }
 
@@ -791,7 +1015,9 @@ function checkAnswer() {
 
         correctAnswer();
 
-    } else {
+    }
+
+    else {
 
         wrongAnswer();
 
@@ -800,134 +1026,143 @@ function checkAnswer() {
 }
 
 
-/* =========================================================
-   CORRECT
-   ========================================================= */
+/* =========================================
+   CORRECT ANSWER
+========================================= */
 
 function correctAnswer() {
 
     feedback.textContent =
         "Great job! ✓";
 
+
     feedback.className =
         "correct";
+
 
     playDing();
 
     celebrate();
 
 
-    /*
-       Automatically move to another
-       letter after a short celebration.
-    */
-
     setTimeout(
         newLetter,
-        1300
+        1400
     );
-
 }
 
 
-/* =========================================================
-   WRONG
-   ========================================================= */
+/* =========================================
+   WRONG ANSWER
+========================================= */
 
 function wrongAnswer() {
 
     feedback.textContent =
         "Try again!";
 
+
     feedback.className =
         "wrong";
 
 
-    /*
-       Give student enough time to see
-       the feedback before returning.
-    */
-
     setTimeout(
-        function() {
-
-            resetLetter();
-
-        },
-        450
+        resetLetter,
+        500
     );
-
 }
 
 
-/* =========================================================
+/* =========================================
    DING SOUND
-   Uses Web Audio API so no external audio file is needed.
-   ========================================================= */
+========================================= */
 
 function playDing() {
 
     try {
 
         const AudioContext =
-            window.AudioContext ||
+            window.AudioContext
+            ||
             window.webkitAudioContext;
+
 
         const ctx =
             new AudioContext();
 
+
         const oscillator =
             ctx.createOscillator();
+
 
         const gain =
             ctx.createGain();
 
-        oscillator.connect(gain);
-        gain.connect(ctx.destination);
+
+        oscillator.connect(
+            gain
+        );
+
+
+        gain.connect(
+            ctx.destination
+        );
+
 
         oscillator.type =
             "sine";
 
-        oscillator.frequency.setValueAtTime(
-            660,
-            ctx.currentTime
-        );
 
-        oscillator.frequency.exponentialRampToValueAtTime(
-            880,
-            ctx.currentTime + .18
-        );
+        oscillator.frequency
+            .setValueAtTime(
+                660,
+                ctx.currentTime
+            );
 
-        gain.gain.setValueAtTime(
-            .18,
-            ctx.currentTime
-        );
 
-        gain.gain.exponentialRampToValueAtTime(
-            .001,
-            ctx.currentTime + .45
-        );
+        oscillator.frequency
+            .exponentialRampToValueAtTime(
+                880,
+                ctx.currentTime + .18
+            );
+
+
+        gain.gain
+            .setValueAtTime(
+                .18,
+                ctx.currentTime
+            );
+
+
+        gain.gain
+            .exponentialRampToValueAtTime(
+                .001,
+                ctx.currentTime + .45
+            );
+
 
         oscillator.start();
+
 
         oscillator.stop(
             ctx.currentTime + .45
         );
 
-    } catch (err) {
+    }
+
+    catch(error) {
 
         console.log(
-            "Audio unavailable."
+            "Audio unavailable"
         );
 
     }
-
 }
 
 
-/* =========================================================
-   CONFETTI
-   ========================================================= */
+/* =========================================
+   CELEBRATION
+========================================= */
 
 function celebrate() {
 
@@ -947,31 +1182,39 @@ function celebrate() {
     ) {
 
         const piece =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
         piece.className =
             "confetti";
 
+
         piece.style.left =
-            Math.random() *
-            window.innerWidth +
-            "px";
+            Math.random()
+            * window.innerWidth
+            + "px";
+
 
         piece.style.top =
             "-10px";
 
+
         piece.style.background =
             colors[
                 Math.floor(
-                    Math.random() *
-                    colors.length
+                    Math.random()
+                    * colors.length
                 )
             ];
 
+
         piece.style.animationDelay =
-            Math.random() *
-            .25 +
-            "s";
+            Math.random()
+            * .25
+            + "s";
+
 
         document.body.appendChild(
             piece
@@ -988,13 +1231,12 @@ function celebrate() {
         );
 
     }
-
 }
 
 
-/* =========================================================
-   START GAME
-   ========================================================= */
+/* =========================================
+   START
+========================================= */
 
 newLetter();
 
